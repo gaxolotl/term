@@ -1,6 +1,6 @@
 
 # term
-![Static Badge](https://img.shields.io/badge/version-1.0_Color_Beta-green)![Static Badge](https://img.shields.io/badge/license-Term_License-yellow)
+![Static Badge](https://img.shields.io/badge/version-1.1_Color_Beta-green)![Static Badge](https://img.shields.io/badge/license-Term_License-yellow)
 ---
 term is the useless "terminal" in python that uses rich for colors and has an easy way to add commands to it
 
