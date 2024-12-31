@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Term has limited support for linux! You can still use it but you will find errors!"
+
 # Check if Python is installed
 if ! command -v python3 &> /dev/null; then
     echo "Python is not installed. Please install Python and try again."

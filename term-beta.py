@@ -61,7 +61,10 @@ def main():
     print_welcome()
 
     while True:
-        prompt = f" {os.getlogin()}@{socket.gethostname()} " if in_devmode else f"{os.getlogin()}@{socket.gethostname()} "
+        username = os.getenv("USER") or os.getenv("USERNAME", "unknown")
+        hostname = socket.gethostname()
+        prompt = f" {username}@{hostname} " if in_devmode else f"{username}@{hostname} "
+        
         user_input = input(prompt).strip()
 
         if user_input == "exit":
