@@ -8,6 +8,7 @@ term is the useless "terminal" in python that uses rich for colors and has an ea
 ## download and install
 
 to download and install do the following (you need python and pip installed)
+you can also use the run.sh and run.bat provided
 
 ```bash
   python -m pip install rich
