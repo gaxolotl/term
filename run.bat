@@ -1,4 +1,12 @@
 @echo off
+SETLOCAL EnableDelayedExpansion
+for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
+  set "DEL=%%a"
+)
+
+call :ColorText 0a "Checking for requirements..."
+echo.
+
 REM Check if Python is installed
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
@@ -27,5 +35,15 @@ if %errorlevel% neq 0 (
     )
 )
 
-REM Start the application
+REM Start the application and clear
+cls
 python term-beta.py
+
+goto :eof
+
+:ColorText
+echo off
+<nul set /p ".=%DEL%" > "%~2"
+findstr /v /a:%1 /R "^$" "%~2" nul
+del "%~2" > nul 2>&1
+goto :eof
