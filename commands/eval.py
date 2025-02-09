@@ -1,5 +1,4 @@
 from rich.console import Console
-import platform
 
 console = Console()
 
