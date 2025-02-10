@@ -1,11 +1,13 @@
 import os
 import sys
 import socket
+import shutil
 from importlib import import_module
 from rich.console import Console
 from rich.panel import Panel
 
 console = Console()
+width = shutil.get_terminal_size().columns
 
 COMMANDS = {}
 DEV_COMMANDS = {}
@@ -18,7 +20,7 @@ def print_welcome():
     console.print("Enter devmode: [bold blue]devmode /on[/bold blue]")
     console.print("Type [bold yellow]'help'[/bold yellow] for commands")
     console.print("[italic]Nerd font is recommended[/italic]")
-    console.print("=" * 30)
+    console.print("=" * width)
 
 def print_help():
     console.print(Panel("[bold green]Available Commands[/bold green]", expand=True))
@@ -94,7 +96,7 @@ def main():
                 except Exception as e:
                     console.print(f"[bold red]Error: {e}[/bold red]")
             else:
-                console.print("[bold red]Unknown command. Please try again.[/bold red]")
+                console.print(f"[bold red]Unknown command: {user_input}[/bold red]")
 
 if __name__ == "__main__":
     main()
