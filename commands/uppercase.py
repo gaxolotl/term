@@ -3,7 +3,11 @@ from rich.console import Console
 console = Console()
 
 def uppercase(args):
-    message = args.upper()
+    if not args:
+        console.print("[bold red]Error:[/bold red] No message provided.")
+        return
+    
+    message = " ".join(args).upper()  # Join list into a string and convert to uppercase
     console.print(f"[bold yellow]{message}[/bold yellow]")
 
 def register(register_command):
