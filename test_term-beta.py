@@ -58,7 +58,7 @@ def load_commands():
             else:
                 console.print(f"[bold yellow]Warning: {filename} does not have a register function.[/bold yellow]")
 
-def main():
+def test_main():
     in_devmode = False
 
     load_commands()
@@ -105,4 +105,4 @@ def main():
                 console.print(f"[bold red]Unknown command: {user_input}[/bold red]")
 
 if __name__ == "__main__":
-    main()
+    test_main()
