@@ -3,6 +3,7 @@ import sys
 import socket
 import shutil
 import importlib
+from unittest import mock
 from importlib import import_module
 from rich.console import Console
 from rich.panel import Panel
@@ -58,9 +59,11 @@ def load_commands():
             else:
                 console.print(f"[bold yellow]Warning: {filename} does not have a register function.[/bold yellow]")
 
-def test_main():
+def test_main(monkeypatch):
+    # Mocking the input function to simulate user input
+    monkeypatch.setattr('builtins.input', lambda prompt: 'exit')  # Simulate user typing 'exit'
+    
     in_devmode = False
-
     load_commands()
     print_welcome()
 
@@ -68,14 +71,12 @@ def test_main():
         username = os.getenv("USERNAME") or os.getenv("USER") or "unknown"
         hostname = socket.gethostname()
         prompt = f" {username}@{hostname} " if in_devmode else f"{username}@{hostname} "
-        
+
+        # Here the input is mocked, so no actual input is required during the test
         user_input = input(prompt).strip()
 
-        if not user_input:  # Fix for empty input crash
-            continue
-
         if user_input == "exit":
-            console.print("[bold red]Exiting...[/bold red]")
+            print("Exiting...")
             break
         elif user_input == "help":
             print_help() if not in_devmode else print_devhelp()
